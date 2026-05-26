@@ -83,7 +83,7 @@ function App() {
         <header style={{ textAlign: 'center', marginBottom: '10px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', justifyContent: 'center', marginBottom: '8px' }}>
             <Shield size={36} style={{ color: 'var(--cyan)', filter: 'drop-shadow(0 0 8px var(--cyan-glow))' }} />
-            <h1 style={{ margin: 0 }}>Fortress</h1>
+            <h1 style={{ margin: 0 }}>Akhil Fortress</h1>
           </div>
           <p className="subtitle">
             Advanced real-time password entropy &amp; security analyser
