@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+# 🛡️ Akhil Fortress
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Akhil Fortress** is a visually stunning, zero-knowledge, client-side password security tool and dashboard. It calculates mathematical information-theoretic entropy, scans for common leaked passwords (including complex leetspeak variants), flags personal identity leaks, and generates cryptographically secure alternatives or upgrades.
 
-Currently, two official plugins are available:
+Built with a futuristic glassmorphic cyberpunk theme, it delivers real-time, high-performance visual feedback and guarantees absolute privacy by running entirely inside the local browser sandbox.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🌟 Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Mathematical Entropy Calculator
+Calculates the exact strength of passwords using Shannon entropy:
+$$E = L \times \log_2(R)$$
+Where:
+- $L$ is the length of the password.
+- $R$ is the size of the character pool (lowercase = 26, uppercase = 26, digits = 10, symbols = 33).
 
-## Expanding the ESLint configuration
+It applies automated entropy deductions for repeated characters (e.g., `aaaa`) and keyboard/alphabetical sequences (e.g., `12345`, `qwert`, `abcd`).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2. Time-To-Crack Estimation
+Simulates how long a hacker would take to crack the password under two environments:
+- **Offline Attack**: High-speed offline cracking clusters (e.g., hashcat on multiple GPUs) running $10^{10}$ guesses/second.
+- **Online Attack**: Standard remote network latency and rate-limiting limits running $100$ guesses/second.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 3. Smart Dictionary & Leetspeak Decoding
+- Scans passwords against a database of the most common leaked passwords, keyboard walks, and dictionary roots.
+- Normalizes character substitutions to detect hidden patterns (e.g., `P@$$w0rd` is decoded to `password` and flagged as weak).
+- Supported mappings: `@/4 -> a`, `3 -> e`, `1/! -> i`, `0 -> o`, `5/$ -> s`, `7 -> t`, `8 -> b`, `9 -> g`.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 4. Personal Context Leak Scan
+Allows users to enter their username, nickname, or email context. The application flags any password containing these values to prevent targeted social engineering attacks.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 5. Smart Upgrade Simulator
+Recommends three categories of upgraded passwords derived from their input:
+- **Standard Complexity**: Injects missing character classes and pads the length to at least 12 characters.
+- **Memorable Passphrase**: Appends random memorable dictionary words separated by a delimiter, expanding length while remaining easy to remember.
+- **Full Cyber Shield**: Alters characters to mixed-case, wraps the password in brackets, and appends a cryptographically secure 6-character random suffix.
+
+### 6. Secure Random & Passphrase Generators
+Includes a dedicated tabbed generator panel:
+- **Secure Random**: Custom length, lowercase, uppercase, numbers, and symbols sliders.
+- **Memorable Passphrase (Diceware)**: Selects 3-8 random words from a curated list of easy-to-recall English nouns and adjectives.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Framework**: [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vite.dev/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Visual Effects**: [Canvas Confetti](https://github.com/catdad/canvas-confetti)
+- **Styling**: Pure vanilla CSS styled custom design system (Cyberpunk Glassmorphism)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) installed.
+
+### Installation
+
+1. Navigate to the repository directory:
+   ```bash
+   cd "d:\Code\Password Strength Checker"
+   ```
+
+2. Install the package dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Spin up the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:5173/](http://localhost:5173/) in your web browser.
+
+### Production Build
+
+To compile a minified production bundle in the `dist` directory:
+```bash
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To preview the production build locally:
+```bash
+npm run preview
 ```
+
+---
+
+## 🔒 Zero-Knowledge Security Model
+
+Unlike many online password checkers, **Akhil Fortress** is 100% client-side:
+- **No network requests**: Passwords are never sent to external APIs or databases.
+- **Zero tracking**: Computations and generators execute entirely in your local browser sandbox.
+- **Cryptographically Secure**: Random passwords are generated using browser-native `crypto.getRandomValues()`.
